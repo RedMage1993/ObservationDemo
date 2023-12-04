@@ -17,7 +17,7 @@ struct ContentView: View {
     var body: some View {
         let _ = Self._printChanges()
         LikeButton(likeable: $viewModel) {
-            viewModel.setLike(like: viewModel.isLiked)
+            viewModel.setLike(like: !viewModel.isLiked)
         }
         .padding()
     }

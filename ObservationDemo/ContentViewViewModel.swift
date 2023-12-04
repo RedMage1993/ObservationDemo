@@ -41,6 +41,8 @@ import Foundation
     }
     
     func setLike(like: Bool) {
+        isLiked = like // Immediate update
+        
         Task {
             let result = await dealRepository.setLike(like: like)
             

@@ -19,7 +19,6 @@ struct LikeButton<T: Likeable>: View {
     var body: some View {
         let _ = Self._printChanges()
         Button {
-            likeable.isLiked.toggle() // Immediate update
             action?()
         } label: {
             Text(likeable.isLiked ? "Dislike": "Like")

@@ -16,7 +16,7 @@ protocol DealRepository {
     func setLike(like: Bool) async -> Result<Bool, DealRepositoryError>
 }
 
-class DefaultDealRepository: DealRepository {
+actor DefaultDealRepository: DealRepository {
     func getDeal() async -> Result<Deal, DealRepositoryError> {
         try? await Task.sleep(until: .now + .seconds(0.5))
         
