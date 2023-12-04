@@ -7,8 +7,12 @@
 
 import SwiftUI
 
-struct ContentView<ViewModel: ContentViewViewModel & Likeable>: View {
-    @State var viewModel: ViewModel
+struct ContentView: View {
+    @State var viewModel: ContentViewViewModel
+    
+    init(dealRepository: DealRepository) {
+        viewModel = ContentViewViewModel(dealRepository: dealRepository)
+    }
     
     var body: some View {
         let _ = Self._printChanges()
@@ -20,5 +24,5 @@ struct ContentView<ViewModel: ContentViewViewModel & Likeable>: View {
 }
 
 #Preview {
-    ContentView(viewModel: DefaultContentViewViewModel(dealRepository: DefaultDealRepository()))
+    ContentView(dealRepository: DefaultDealRepository())
 }
