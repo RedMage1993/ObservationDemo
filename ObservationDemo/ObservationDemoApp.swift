@@ -13,7 +13,7 @@ struct ObservationDemoApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(dealRepository: dealRepository)
+            ContentView(viewModel: DefaultContentViewViewModel(dealRepository: dealRepository))
         }
     }
 }

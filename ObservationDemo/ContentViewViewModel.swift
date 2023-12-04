@@ -7,7 +7,13 @@
 
 import Foundation
 
-@Observable class ContentViewViewModel: Likeable {
+protocol ContentViewViewModel: AnyObject, Observable {
+    var isLiked: Bool { get set }
+    
+    func setLike(like: Bool)
+}
+
+@Observable class DefaultContentViewViewModel: Likeable, ContentViewViewModel {
     private let dealRepository: DealRepository
     
     private var deal: Deal? {
