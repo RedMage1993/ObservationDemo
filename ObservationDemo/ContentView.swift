@@ -8,17 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var viewModel: ContentViewViewModel
+    
+    init(dealRepository: DealRepository) {
+        viewModel = ContentViewViewModel(dealRepository: dealRepository)
+    }
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        let _ = Self._printChanges()
+        LikeButton(likeable: $viewModel) {
+            viewModel.setLike(like: viewModel.isLiked)
         }
         .padding()
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView(dealRepository: DefaultDealRepository())
 }
