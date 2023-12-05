@@ -8,13 +8,13 @@
 import Foundation
 import SwiftUI
 
-struct DealRepositoryKey: EnvironmentKey {
-    static var defaultValue: DealRepository = DefaultDealRepository()
+struct OfferRepositoryKey: EnvironmentKey {
+    static var defaultValue: OfferRepository = DefaultOfferRepository()
 }
 
 extension EnvironmentValues {
-    var dealRepository: DealRepository {
-        get { self[DealRepositoryKey.self] }
-        set { self[DealRepositoryKey.self] = newValue }
+    var offerRepository: OfferRepository {
+        get { self[OfferRepositoryKey.self] }
+        set { self[OfferRepositoryKey.self] = newValue }
     }
 }
