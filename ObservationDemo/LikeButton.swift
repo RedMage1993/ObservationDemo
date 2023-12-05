@@ -9,19 +9,23 @@ import Foundation
 import SwiftUI
 
 protocol Likeable: AnyObject {
+    var title: String { get }
     var isLiked: Bool { get set }
 }
 
-struct LikeButton<T: Likeable>: View {
-    let likeable: T
+struct LikeButton: View {
+    let likeable: Likeable
     let action: (() -> ())?
     
     var body: some View {
         let _ = Self._printChanges()
-        Button {
-            action?()
-        } label: {
-            Text(likeable.isLiked ? "Dislike": "Like")
+        HStack {
+            Text(likeable.title)
+            Button {
+                action?()
+            } label: {
+                Text(likeable.isLiked ? "Dislike": "Like")
+            }
         }
     }
 }

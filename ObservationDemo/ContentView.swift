@@ -8,40 +8,31 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(\.offerRepository) var offerRepository
-    @State var offers: [Offer] = []
+    @State var viewModel: ContentViewModel
+    
+    @MainActor
+    init(offerRepository: OfferRepository) {
+        viewModel = ContentViewModel(offerRepository: offerRepository)
+    }
     
     var body: some View {
         let _ = Self._printChanges()
         VStack {
-            ForEach(offers) { offer in
-                switch offer {
-                case .deal(let deal):
-                    HStack {
-                        Text("Deal: \(deal.title)")
-                        OfferLikeButton(likeable: deal, offer: offer, offerRepository: offerRepository)
-                    }
-                case .coupon(let coupon):
-                    HStack {
-                        Text("Coupon: \(coupon.title)")
-                        OfferLikeButton(likeable: coupon, offer: offer, offerRepository: offerRepository)
+            ForEach(viewModel.offers) { offer in
+                LikeButton(likeable: offer.content) {
+                    Task {
+                        await viewModel.setLike(like: !offer.content.isLiked, on: offer)
                     }
                 }
             }
         }
         .padding()
         .task {
-            let offersResult = await offerRepository.getOffers()
-            
-            switch offersResult {
-            case .success(let offers):
-                self.offers = offers
-            case .failure(_): break
-            }
+            await viewModel.getOffers()
         }
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView(offerRepository: DefaultOfferRepository())
 }

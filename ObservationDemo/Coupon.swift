@@ -16,5 +16,3 @@ import Foundation
         self.isLiked = isLiked
     }
 }
-
-extension Coupon: Likeable {}

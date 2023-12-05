@@ -21,9 +21,9 @@ actor DefaultOfferRepository: OfferRepository {
         try? await Task.sleep(until: .now + .seconds(0.5))
         
         return .success([
-            .deal(Deal(title: "$1 Pizza", isLiked: false)),
-            .deal(Deal(title: "$2 Scooter", isLiked: false)),
-            .coupon(Coupon(title: "ABC", isLiked: false)),
+            .deal(Deal(title: "Deal: $1 Pizza", isLiked: false)),
+            .deal(Deal(title: "Deal: $2 Scooter", isLiked: false)),
+            .coupon(Coupon(title: "Coupon: ABC", isLiked: false)),
         ])
     }
     

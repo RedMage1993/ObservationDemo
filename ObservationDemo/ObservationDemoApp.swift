@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct ObservationDemoApp: App {
+    @Environment(\.offerRepository) var offerRepository
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(offerRepository: offerRepository)
         }
     }
 }
