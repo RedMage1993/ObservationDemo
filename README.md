@@ -7,3 +7,5 @@ If I were okay with making all of my decodable models @Observable classes, I mig
 I don't necessarily believe that one should use MVVM.
 
 SwiftUI is becoming something where it may not make the most sense.
+
+Switch to the model-view branch for a demo that uses MV.
