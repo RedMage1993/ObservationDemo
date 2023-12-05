@@ -1,13 +1,13 @@
 //
-//  Deal.swift
+//  Coupon.swift
 //  ObservationDemo
 //
-//  Created by Fritz Ammon on 12/3/23.
+//  Created by Fritz Ammon on 12/4/23.
 //
 
 import Foundation
 
-@Observable class Deal: Identifiable {
+@Observable class Coupon: Identifiable {
     let title: String
     var isLiked: Bool
     
@@ -17,4 +17,4 @@ import Foundation
     }
 }
 
-extension Deal: Likeable {}
+extension Coupon: Likeable {}

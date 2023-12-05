@@ -8,12 +8,12 @@
 import Foundation
 import SwiftUI
 
-protocol Likeable {
+protocol Likeable: AnyObject {
     var isLiked: Bool { get set }
 }
 
 struct LikeButton<T: Likeable>: View {
-    @Binding var likeable: T
+    let likeable: T
     let action: (() -> ())?
     
     var body: some View {
